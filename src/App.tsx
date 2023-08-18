@@ -6,7 +6,7 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="border-4 border-bordercolor  mx-5 mt-5">
+    <div className="border-4 border-bordercolor  mt-5 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl sm:ms-1 lg:mx-auto md:mx-auto shadow-lg">
 
 
       <Router>
