@@ -26,7 +26,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-orange-50 w-full py-3 px-5">
+    <div className="bg-orange-50  py-3 px-5 ">
       {active === 'displaycontact' && <div className="text-center">
         <button
           className="btn bg-gray-200 border-gray-600 border-2  text-black text-xl font-bold my-5 p-2 font-serif"
@@ -37,13 +37,13 @@ const Contact = () => {
       </div>}
 
 
-      {active === 'displaycontact' ? contacts.length === 0 ? (
-        <div className="flex ">
+      {active === 'displaycontact' ? contacts.length > 0 ? (
+        <div className="flex w-auto">
           {contacts.map((contact, index) => (
-            <div key={index} className="me-2 w-1/2">
-              <div className="border-2 border-black p-2 ">
+            <div key={index} className="me-1 w-1/2">
+              <div className="border-2 border-black p-1 overflow-hidden">
                 <span className="font-semibold">{contact.fname}</span>
-                <span className="ml-2 font-semibold">{contact.lname}</span>
+                <span className="ml-1 font-semibold  overflow-hidden overflow-ellipsis">{contact.lname}</span>
                 <span className="block">{contact.status}</span>
               </div>
               <button className="btn bg-lime-400 rounded text-white px-2 py-1 font-semibold my-4 w-20 block border-2 border-gray-400 font-sans mx-auto" onClick={handleEditContactClick}>
@@ -57,7 +57,7 @@ const Contact = () => {
         </div>
       ) : (
         <div
-          className="border-2 border-black p-2 mt-8 flex justify-evenly md:justify-between mx-2"
+          className="border-2 border-black p-2 mt-8 flex justify-evenly md:justify-between mx-2 mb-10"
           style={{ backgroundColor: "#E5E5E5" }}
         >
           <div className="mt-8">
@@ -65,7 +65,7 @@ const Contact = () => {
             <RiCloseCircleFill size="3em" />
           </div>
 
-          <div className=" px-2 my-6">
+          <div className=" px-2 my-6 ">
             <p className="text-gray-900 lg:text-2xl  sm:text-sm font-semibold">
               No Contact Found
               <br />
