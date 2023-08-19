@@ -6,7 +6,7 @@ import Sidebar from './Sidebar'
 
 const Layout = () => {
     return (
-        <div className='  flex h-[400px]'><Sidebar/>  <Outlet /></div>
+        <div className=' '><Sidebar/>  <Outlet /></div>
     )
 }
 

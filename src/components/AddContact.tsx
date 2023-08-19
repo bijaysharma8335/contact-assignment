@@ -1,28 +1,61 @@
-import React from 'react'
-import { RiCloseCircleFill } from 'react-icons/ri'
+import React from "react";
 
-type Props = {}
+const AddContact = () => {
+    return (
+        <div className="p-2">
+            <h5 className="text-center my-3 text-black font-semibold font-serif">
+                Create Contact Screen
+            </h5>
+            <div className="border-2 border-black p-2 bg-white">
+                <form>
+                    <div className="flex mb-4">
+                        <label htmlFor="fname" className="mr-2 font-semibold">
+                            First Name:
+                        </label>
+                        <input type="text" className="border border-black py-1 px-2" />
+                    </div>
+                    <div className="flex mb-4">
+                        <label htmlFor="lname" className="mr-2 font-semibold">
+                            Last Name:
+                        </label>
+                        <input type="text" className="border border-black py-1 px-2" />
+                    </div>
+                    <div className="flex mb-4">
+                        <label className="mr-2 font-semibold me-8 mt-4 ms-2">Status:</label>
+                        <div>
+                            <div className="flex items-center mb-2">
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="Active"
+                                    className="mr-1 w-4 h-4" style={{ accentColor: "black" }}
+                                />
+                                <span className="text-black font-semibold">Active</span>
+                            </div>
+                            <div className="flex items-center">
+                                <input
+                                    type="radio"
+                                    name="status"
+                                    value="Inactive"
+                                    id="specify-color"
+                                    className="mr-1 w-4 h-4"
+                                    defaultChecked
+                                    style={{ accentColor: "black" }}
+                                />
+                                <span className="text-black font-semibold" >Inactive</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-const AddContact = (props: Props) => {
-  return (
-    <div className='bg-orange-50 w-full py-3 px-5'>
-      <div className='text-center'><button className='btn bg-gray-200 border-gray-600 border-2  text-black text-xl font-bold my-5 p-3 font-serif'>Create Contact</button>
-      </div>
-      <div className='border-2 border-black p-2 mt-8 flex justify-evenly md:justify-between' style={{ backgroundColor: "#E5E5E5" }}>
-        <div className='mt-8'>   <RiCloseCircleFill size='2em' /></div>
-        <div className=' px-2 my-6' >
-          <p className='text-gray-900 lg:text-2xl  sm:text-sm font-semibold'>
-            No Contact Found<br />
-
-            Please add contact from<br />
-            Create Contact Button</p>
-
+            <div className="text-center">
+                <button className="btn bg-gray-200 border-gray-600 border-2  text-black text-sm font-bold my-2 p-2 font-serif">
+                    Save Contact
+                </button>
+            </div>
         </div>
+    );
+};
 
-
-      </div>
-    </div>
-  )
-}
-
-export default AddContact 
+export default AddContact;

@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
     return (
-        <div className='w-auto border-4 border-black '>
-            <ul className='p-2 mx-2 h-full'>
-                <li>
-                    <Link to='/' className='text-2xl text-blue-500 underline py-5 border-b-violet-950'>Contact</Link>
+        <div className=' border-2 border-black w-1/3'>
+            <ul className=' h-full'>
+                <li className="border-b-2 border-black p-5">
+                    <Link to='/' className='text-2xl text-blue-500 underline   '>Contact</Link>
                 </li>
-                <li>
-                    <Link to='/charts' className='text-2xl text-blue-500 underline my-4'>Charts and Maps</Link>
+                <li className='border-b-2 border-black p-5'>
+                    <Link to='/charts' className='text-2xl text-blue-500 underline  '>Charts and Maps</Link>
                 </li>
+                <li className='p-5 text-2xl text-black font-semibold'>Sidebar</li>
             </ul>
         </div>
     )
