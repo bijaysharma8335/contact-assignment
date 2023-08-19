@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react'
 
-const AddContact = () => {
-    
+
+
+const EditContact = () => {
     return (
         <div className="p-2">
             <h5 className="text-center my-3 text-black font-semibold font-serif">
-                Create Contact Screen
+                Edit Contact Screen
             </h5>
             <div className="border-2 border-black p-2 bg-white">
                 <form>
@@ -52,14 +53,11 @@ const AddContact = () => {
 
             <div className="text-center">
                 <button className="btn bg-gray-200 border-gray-600 border-2  text-black text-sm font-bold my-2 p-2 font-serif">
-                    Save Contact
+                    Save Editted Contact
                 </button>
             </div>
-
-
-            
         </div>
     );
-};
+}
 
-export default AddContact;
+export default EditContact
