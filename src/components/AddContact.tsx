@@ -1,7 +1,6 @@
 import React from "react";
 
 const AddContact = () => {
-    
     return (
         <div className="p-2">
             <h5 className="text-center my-3 text-black font-semibold font-serif">
@@ -29,7 +28,8 @@ const AddContact = () => {
                                     type="radio"
                                     name="status"
                                     value="Active"
-                                    className="mr-1 w-4 h-4" style={{ accentColor: "black" }}
+                                    className="mr-1 w-4 h-4"
+                                    style={{ accentColor: "black" }}
                                 />
                                 <span className="text-black font-semibold">Active</span>
                             </div>
@@ -43,7 +43,7 @@ const AddContact = () => {
                                     defaultChecked
                                     style={{ accentColor: "black" }}
                                 />
-                                <span className="text-black font-semibold" >Inactive</span>
+                                <span className="text-black font-semibold">Inactive</span>
                             </div>
                         </div>
                     </div>
@@ -55,9 +55,6 @@ const AddContact = () => {
                     Save Contact
                 </button>
             </div>
-
-
-            
         </div>
     );
 };
