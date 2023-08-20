@@ -33,8 +33,8 @@ const Map: React.FC = () => {
     useEffect(() => {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
-            if (screenWidth <= 400) {
-                setChartWidth("240px");
+            if (screenWidth < 400) {
+                setChartWidth("200px");
             } else {
                 setChartWidth("100%");
             }
@@ -67,7 +67,7 @@ const Map: React.FC = () => {
 
     const worldData = worldwideDataQuery.data;
     return (
-        <div className="w-full md:p-4 lg:p-4 ml-1">
+        <div className="w-full md:p-4 lg:p-4  sm:p-3 ml-1">
             <h1 className="text-xl font-semibold mb-2 ">Map</h1>
             <div className="bg-white  my-2 p-2">
                 <span className="block"> Total Cases : {worldData?.cases}</span>
@@ -78,7 +78,7 @@ const Map: React.FC = () => {
             <MapContainer
                 center={[0, 0]}
                 zoom={2}
-                style={{ height: "400px", width: chartWidth, marginLeft: "4px" }}
+                style={{ height: "400px", marginRight:'2px' }}
             >
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
