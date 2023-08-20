@@ -12,10 +12,8 @@ function App() {
                 <Router>
                     <Sidebar />
                     <Routes>
-                        {/* <Route path='/' element={<Layout />}> */}
                         <Route path="/" element={<Contact />} />
                         <Route path="/charts" element={<Dashboard />} />
-                        {/* </Route> */}
                     </Routes>
                 </Router>
             </div>

@@ -1,30 +1,35 @@
 import React, { useState, FC } from "react";
 import { RiCloseCircleFill } from "react-icons/ri";
+import { useSelector } from "react-redux";
 import AddContact from "./Contact/AddContact";
 import EditContact from "./Contact/EditContact";
-const contacts = [
-    {
-        index: 1,
-        fname: "John",
-        lname: "Doe",
-        status: "Active",
-    },
-    {
-        index: 2,
-        fname: "Alisha",
-        lname: "Shrestha",
-        status: "Active",
-    },
-];
-const Contact: FC = () => {
+import { RootState } from "./features/store";
+
+interface Contact {
+    id: string;
+    firstName: string;
+    lastName: string;
+    status: string;
+}
+const ContactPage: FC = () => {
+    // Retrieve contacts data from Redux store using useSelector
+    const contacts = useSelector((state: RootState) => state.contacts.contacts);
     const [active, setActive] = useState("displaycontact");
+    const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+
+    // Handle click event to switch to the 'addcontact' mode
     const handleCreateContactClick = () => {
         setActive("addcontact");
     };
-    const handleEditContactClick = () => {
+    // Handle click event to switch to the 'editcontact' mode
+    const handleEditContactClick = (contact: Contact) => {
         setActive("editcontact");
+        setSelectedContact(contact);
     };
+    // Handle click event to switch to the 'editcontact' mode
+    const handleDeleteContactClick = () => {};
 
+    console.log(contacts);
     return (
         <div className="bg-orange-50  py-3 px-5 w-full">
             {active === "displaycontact" && (
@@ -44,15 +49,15 @@ const Contact: FC = () => {
                         {contacts.map((contact, index) => (
                             <div key={index} className="me-1 w-1/2">
                                 <div className="border-2 border-black p-1 overflow-hidden">
-                                    <span className="font-semibold">{contact.fname}</span>
+                                    <span className="font-semibold">{contact.firstName}</span>
                                     <span className="ml-1 font-semibold  overflow-hidden overflow-ellipsis">
-                                        {contact.lname}
+                                        {contact.lastName}
                                     </span>
                                     <span className="block">{contact.status}</span>
                                 </div>
                                 <button
+                                    // onClick={() => handleEditContactClick(contact)}
                                     className="btn bg-lime-400 rounded text-white px-2 py-1 font-semibold my-4 w-20 block border-2 border-gray-400 font-sans mx-auto"
-                                    onClick={handleEditContactClick}
                                 >
                                     Edit
                                 </button>
@@ -84,10 +89,14 @@ const Contact: FC = () => {
                     </div>
                 )
             ) : null}
+            {/* Render the 'AddContact' component in 'addcontact' mode */}
             {active === "addcontact" && <AddContact />}
-            {active === "editcontact" && <EditContact />}
+            {/* Render the 'EditContact' component in 'editcontact' mode */}
+            {active === "editcontact" && selectedContact !== null && (
+                <EditContact contact={selectedContact} />
+            )}
         </div>
     );
 };
 
-export default Contact;
+export default ContactPage;

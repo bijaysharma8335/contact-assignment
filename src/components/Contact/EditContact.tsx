@@ -1,6 +1,17 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
-const EditContact: FC = () => {
+interface Contact {
+    id: string;
+    firstName: string;
+    lastName: string; // Use 'string' instead of 'String'
+    status: string;
+    // Add other properties as needed
+}
+interface EditContactProps {
+    contact: Contact; // Assuming Contact is properly defined
+}
+
+const EditContact: FC<EditContactProps> = ({ contact }) => {
     return (
         <div className="p-2">
             <h5 className="text-center my-3 text-black font-semibold font-serif">

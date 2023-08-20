@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import LineGraph from "./Graphs/LineGraph";
 import Map from "./Graphs/Map";
 
