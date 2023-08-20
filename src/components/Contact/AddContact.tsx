@@ -1,8 +1,10 @@
 import React, { useState, FC } from "react";
 import { useDispatch } from "react-redux";
+import { addContact } from "../features/contactSlice";
 
 //component for creating and saving new contact
 const AddContact: FC = () => {
+    const dispatch = useDispatch();
     //usestates
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -24,8 +26,10 @@ const AddContact: FC = () => {
     };
     //event handler for for new contact to store
     const handleSaveContact = () => {
-        const newContact = { firstName, lastName, status };
-        console.log(newContact);
+        const newContact = { id: String(Date.now()), firstName, lastName, status };
+
+        //dispatch addcontact reducer function and update store
+        dispatch(addContact(newContact));
     };
 
     return (
@@ -34,7 +38,7 @@ const AddContact: FC = () => {
                 Create Contact Screen
             </h5>
             <div className="border-2 border-black p-2 bg-white">
-                <form onSubmit={handleSaveContact}>
+                <form>
                     <div className="flex mb-4">
                         <label htmlFor="fname" className="mr-2 font-semibold">
                             First Name:
@@ -44,6 +48,7 @@ const AddContact: FC = () => {
                             className="border border-black py-1 px-2"
                             value={firstName}
                             onChange={handleFirstNameChange}
+                            required
                         />
                     </div>
                     <div className="flex mb-4">
@@ -55,6 +60,7 @@ const AddContact: FC = () => {
                             className="border border-black py-1 px-2"
                             value={lastName}
                             onChange={handleLastNameChange}
+                            required
                         />
                     </div>
                     <div className="flex mb-4">
@@ -92,7 +98,7 @@ const AddContact: FC = () => {
 
             <div className="text-center">
                 <button
-                    type="submit"
+                    onClick={handleSaveContact}
                     className="btn bg-gray-200 border-gray-600 border-2  text-black text-sm font-bold my-2 p-2 font-serif"
                 >
                     Save Contact

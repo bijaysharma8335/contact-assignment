@@ -17,12 +17,14 @@ import {
 } from "chart.js";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
+// Defining the structure of a GraphData
 interface GraphData {
     cases: Record<string, number>;
     recovered: Record<string, number>;
     deaths: Record<string, number>;
 }
 
+//creating Line Graph component to display line graph chart 
 const LineGraph: FC = () => {
     const graphQuery = useQuery<GraphData>({
         queryKey: ["graphData"],
