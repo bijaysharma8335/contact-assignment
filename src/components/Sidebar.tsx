@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar: FC = () => {
     return (
-        <div className=" border-2 border-black w-1/3">
+        <div className=" border-2 border-black w-1/3 ">
             <ul className=" h-full">
                 <li className="border-b-2 border-black p-5">
                     <Link to="/" className="text-2xl text-blue-500 underline   ">

@@ -31,7 +31,7 @@ const ContactPage: FC = () => {
 
     console.log(contacts);
     return (
-        <div className="bg-orange-50  py-3 px-5 w-full">
+        <div className="bg-orange-50  py-3 px-5  w-full  ">
             {active === "displaycontact" && (
                 <div className="text-center">
                     <button
@@ -49,6 +49,7 @@ const ContactPage: FC = () => {
                         {contacts.map((contact, index) => (
                             <div key={index} className="me-1 w-1/2">
                                 <div className="border-2 border-black p-1 overflow-hidden">
+                                    <button>View</button>
                                     <span className="font-semibold">{contact.firstName}</span>
                                     <span className="ml-1 font-semibold  overflow-hidden overflow-ellipsis">
                                         {contact.lastName}
@@ -73,7 +74,6 @@ const ContactPage: FC = () => {
                         style={{ backgroundColor: "#E5E5E5" }}
                     >
                         <div className="mt-8">
-                            {" "}
                             <RiCloseCircleFill size="3em" />
                         </div>
 

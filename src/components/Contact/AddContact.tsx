@@ -33,14 +33,14 @@ const AddContact: FC = () => {
     };
 
     return (
-        <div className="p-2">
+        <div className="p-2 ">
             <h5 className="text-center my-3 text-black font-semibold font-serif">
                 Create Contact Screen
             </h5>
             <div className="border-2 border-black p-2 bg-white">
-                <form>
-                    <div className="flex mb-4">
-                        <label htmlFor="fname" className="mr-2 font-semibold">
+                <form className="w-full">
+                    {/* <div className="flex mb-4 ">
+                        <label htmlFor="fname" className="mr-2 font-semibold sm:block">
                             First Name:
                         </label>
                         <input
@@ -50,8 +50,56 @@ const AddContact: FC = () => {
                             onChange={handleFirstNameChange}
                             required
                         />
+                    </div> */}
+                    <div className="mb-4 sm:flex sm:items-center md:flex md:items-start lg:flex lg:items-center xl:flex xl:items-center">
+                        <label htmlFor="fname" className="mr-2 font-semibold sm:w-1/4">
+                            First Name:
+                        </label>
+                        <input
+                            type="text"
+                            className="border border-black py-1 px-2 sm:w-3/4 md:w-full lg:w-3/4 xl:w-3/4"
+                            value={firstName}
+                            onChange={handleFirstNameChange}
+                            required
+                        />
                     </div>
-                    <div className="flex mb-4">
+                    {/* <div className="mb-4 sm:flex sm:items-center">
+                        <label htmlFor="fname" className="mr-2 font-semibold sm:w-1/4">
+                            First Name:
+                        </label>
+                        <input
+                            type="text"
+                            className="border border-black py-1 px-2 sm:w-3/4"
+                            value={firstName}
+                            onChange={handleFirstNameChange}
+                            required
+                        />
+                    </div> */}
+                    {/* <div className="mb-4 sm:flex sm:items-center">
+                        <label htmlFor="lname" className="mr-2 font-semibold sm:w-1/4">
+                            Last Name:
+                        </label>
+                        <input
+                            type="text"
+                            className="border border-black py-1 px-2 sm:w-3/4"
+                            value={lastName}
+                            onChange={handleLastNameChange}
+                            required
+                        />
+                    </div> */}
+                    <div className="mb-4 sm:flex sm:items-center md:flex md:items-start lg:flex lg:items-center xl:flex xl:items-center">
+                        <label htmlFor="lname" className="mr-2 font-semibold sm:w-1/4">
+                            Last Name:
+                        </label>
+                        <input
+                            type="text"
+                            className="border border-black py-1 px-2 sm:w-3/4 md:w-full lg:w-3/4 xl:w-3/4"
+                            value={lastName}
+                            onChange={handleLastNameChange}
+                            required
+                        />
+                    </div>
+                    {/* <div className="flex mb-4 ">
                         <label htmlFor="lname" className="mr-2 font-semibold">
                             Last Name:
                         </label>
@@ -62,16 +110,16 @@ const AddContact: FC = () => {
                             onChange={handleLastNameChange}
                             required
                         />
-                    </div>
+                    </div> */}
                     <div className="flex mb-4">
-                        <label className="mr-2 font-semibold me-8 mt-4 ms-2">Status:</label>
+                        <label className="mr-2 font-semibold me-8 mt-4 ms-1 sm:ms-0">Status:</label>
                         <div>
-                            <div className="flex items-center mb-2">
+                            <div className="flex items-center mb-2 ">
                                 <input
                                     type="radio"
                                     name="status"
                                     value="Active"
-                                    className="mr-1 w-4 h-4"
+                                    className="mr-1 ml-10 sm:ml-2 w-4 h-4"
                                     checked={status === "Active"}
                                     onChange={handleStatusChange}
                                     style={{ accentColor: "black" }}
@@ -84,7 +132,7 @@ const AddContact: FC = () => {
                                     name="status"
                                     value="Inactive"
                                     id="specify-color"
-                                    className="mr-1 w-4 h-4"
+                                    className="mr-1 ml-10 sm:ml-2 w-4 h-4"
                                     checked={status === "Inactive"}
                                     onChange={handleStatusChange}
                                     style={{ accentColor: "black" }}

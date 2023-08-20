@@ -46,15 +46,15 @@ const Map: React.FC = () => {
 
     const worldData = worldwideDataQuery.data;
     return (
-        <div className="w-full">
-            <h1 className="text-xl font-semibold mb-2 mx-2">Map</h1>
+        <div className="w-full p-2">
+            <h1 className="text-xl font-semibold mb-2 ">Map</h1>
             <div className="bg-blue-200  my-2 p-2">
                 <span className="block"> Total Cases : {worldData?.cases}</span>
                 <span> Total Active : {worldData?.active}</span>
                 <span className="block"> Total Deaths : {worldData?.deaths}</span>
                 <span className="block"> Total Recovered : {worldData?.recovered}</span>
             </div>
-            <MapContainer center={[0, 0]} zoom={2} style={{ height: "500px" }}>
+            <MapContainer center={[0, 0]} zoom={2} style={{ height: "400px" }}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

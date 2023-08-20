@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
     return (
-        <div className="border-4 border-bordercolor  mt-5 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl sm:ms-1 lg:mx-auto md:mx-auto shadow-lg w-auto ">
+        <div className="border-4 border-bordercolor  mt-5 sm:max-w-md md:max-w-lg lg:max-w-xl sm:ms-1 lg:mx-auto md:mx-auto shadow-lg w-auto  overflow-x-hidden">
             <Header />
             <div className=" flex ">
                 <Router>
