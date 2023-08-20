@@ -48,12 +48,12 @@ const AddContact: FC<{ onContactSave: () => void }> = ({ onContactSave }) => {
             <div className="border-2 border-black p-2 bg-white">
                 <form className="w-full">
                     <div className="mb-4 sm:flex sm:items-center md:flex md:items-start lg:flex lg:items-center xl:flex xl:items-center">
-                        <label htmlFor="fname" className="mr-2 font-semibold sm:w-1/4">
+                        <label htmlFor="fname" className="mr-2 font-semibold  sm:w-1/4">
                             First Name:
                         </label>
                         <input
                             type="text"
-                            className="border border-black py-1 px-2 sm:w-3/4 md:w-full lg:w-3/4 xl:w-3/4"
+                            className="border border-black py-1 px-2 sm:w-3/4 md:w-full lg:w-3/4 xl:w-3/4 w-full"
                             value={firstName}
                             onChange={handleFirstNameChange}
                             required
@@ -66,7 +66,7 @@ const AddContact: FC<{ onContactSave: () => void }> = ({ onContactSave }) => {
                         </label>
                         <input
                             type="text"
-                            className="border border-black py-1 px-2 sm:w-3/4 md:w-full lg:w-3/4 xl:w-3/4"
+                            className="border border-black py-1 px-2 w-full sm:w-3/4 md:w-full lg:w-3/4 xl:w-3/4"
                             value={lastName}
                             onChange={handleLastNameChange}
                             required

@@ -63,7 +63,7 @@ const EditContact: FC<EditContactProps> = ({ contact }) => {
                         </label>
                         <input
                             type="text"
-                            className="border border-black py-1 px-2 sm:w-3/4 md:w-full lg:w-3/4 xl:w-3/4"
+                            className="border border-black py-1 px-2 sm:w-3/4 md:w-full lg:w-3/4 xl:w-3/4 w-full"
                             value={editedContact.firstName}
                             onChange={handleFirstNameChange}
                             required
@@ -76,7 +76,7 @@ const EditContact: FC<EditContactProps> = ({ contact }) => {
                         </label>
                         <input
                             type="text"
-                            className="border border-black py-1 px-2 sm:w-3/4 md:w-full lg:w-3/4 xl:w-3/4"
+                            className="border border-black py-1 px-2 sm:w-3/4 md:w-full lg:w-3/4 xl:w-3/4 w-full"
                             value={editedContact.lastName}
                             onChange={handleLastNameChange}
                             required
