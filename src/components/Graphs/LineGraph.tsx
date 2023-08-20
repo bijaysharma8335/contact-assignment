@@ -1,5 +1,6 @@
+import React, { FC } from "react";
 import axios from "axios";
-import React from "react";
+
 import { Line } from "react-chartjs-2";
 import { useQuery } from "@tanstack/react-query";
 import "leaflet/dist/leaflet.css";
@@ -22,7 +23,7 @@ interface GraphData {
     deaths: Record<string, number>;
 }
 
-const LineGraph: React.FC = () => {
+const LineGraph: FC = () => {
     const graphQuery = useQuery<GraphData>({
         queryKey: ["graphData"],
         queryFn: async () => {
@@ -30,7 +31,6 @@ const LineGraph: React.FC = () => {
                 "https://disease.sh/v3/covid-19/historical/all?lastdays=all"
             );
             const data = response.data;
-            console.log(data);
             return data;
         },
     });

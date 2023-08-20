@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { FC } from "react";
 
-
-
-const EditContact = () => {
+const EditContact: FC = () => {
     return (
         <div className="p-2">
             <h5 className="text-center my-3 text-black font-semibold font-serif">
@@ -30,7 +28,8 @@ const EditContact = () => {
                                     type="radio"
                                     name="status"
                                     value="Active"
-                                    className="mr-1 w-4 h-4" style={{ accentColor: "black" }}
+                                    className="mr-1 w-4 h-4"
+                                    style={{ accentColor: "black" }}
                                 />
                                 <span className="text-black font-semibold">Active</span>
                             </div>
@@ -44,7 +43,7 @@ const EditContact = () => {
                                     defaultChecked
                                     style={{ accentColor: "black" }}
                                 />
-                                <span className="text-black font-semibold" >Inactive</span>
+                                <span className="text-black font-semibold">Inactive</span>
                             </div>
                         </div>
                     </div>
@@ -58,6 +57,6 @@ const EditContact = () => {
             </div>
         </div>
     );
-}
+};
 
-export default EditContact
+export default EditContact;

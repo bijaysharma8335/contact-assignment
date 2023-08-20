@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import { RiCloseCircleFill } from "react-icons/ri";
 import AddContact from "./Contact/AddContact";
 import EditContact from "./Contact/EditContact";
@@ -16,7 +16,7 @@ const contacts = [
         status: "Active",
     },
 ];
-const Contact = () => {
+const Contact: FC = () => {
     const [active, setActive] = useState("displaycontact");
     const handleCreateContactClick = () => {
         setActive("addcontact");
@@ -26,7 +26,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="bg-orange-50  py-3 px-5 ">
+        <div className="bg-orange-50  py-3 px-5 w-full">
             {active === "displaycontact" && (
                 <div className="text-center">
                     <button

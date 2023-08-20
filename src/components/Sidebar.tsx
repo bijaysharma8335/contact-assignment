@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar: FC = () => {
     return (
         <div className=" border-2 border-black w-1/3">
             <ul className=" h-full">

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import LineGraph from "./Graphs/LineGraph";
+import Map from "./Graphs/Map";
 
-const Dashboard = () => {
+const Dashboard: FC = () => {
     return (
         <>
             <LineGraph />
+            <Map />
         </>
     );
 };

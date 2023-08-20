@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { FC } from "react";
 
-type Props = {}
-
-const Header = (props: Props) => {
+const Header: FC = () => {
     return (
         <nav className="bg-header text-center text-white text-2xl py-5 px-2 font-serif max-w-full">
             Contact Page
         </nav>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;
