@@ -5,11 +5,12 @@ import AddContact from "./Contact/AddContact";
 import EditContact from "./Contact/EditContact";
 import { RootState } from "./features/store";
 import { deleteContact } from "./features/contactSlice";
+import ContactDetailsModal from "./Contact/ViewContact";
 
 interface Contact {
     id: string;
     firstName: string;
-    lastName: string; // Use 'string' instead of 'String'
+    lastName: string;
     status: string;
 }
 const ContactPage: FC = () => {
@@ -18,6 +19,7 @@ const ContactPage: FC = () => {
     const contacts = useSelector((state: RootState) => state.contacts.contacts);
     const [active, setActive] = useState("displaycontact");
     const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     // Handle click event to switch to the 'addcontact' mode
     const handleCreateContactClick = () => {
@@ -34,6 +36,18 @@ const ContactPage: FC = () => {
         // Dispatch deleteContact action with the contact's id
         dispatch(deleteContact(contactId));
     };
+
+    // State for modal visibility
+
+    const handleViewContactClick = (contact: Contact) => {
+        setSelectedContact(contact);
+        setIsModalVisible(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleCloseModal = () => {
+        setIsModalVisible(false);
+    };
     return (
         <div className="bg-orange-50  py-3 px-5  w-full  ">
             {active === "displaycontact" && (
@@ -49,16 +63,24 @@ const ContactPage: FC = () => {
 
             {active === "displaycontact" ? (
                 contacts.length > 0 ? (
-                    <div className="flex w-auto">
+                    <div className="flex w-auto flex-wrap ">
                         {contacts.map((contact, index) => (
-                            <div key={index} className="me-1 w-1/2">
-                                <div className="border-2 border-black p-1 overflow-hidden">
-                                    <button>View</button>
+                            <div key={index} className=" w-1/2 ">
+                                <div className="border-2 border-gray-200 p-2 overflow-hidden rounded m-1">
+                                    <div className="flex justify-between ">
+                                        <span className="font-bold">{index + 1}</span>
+                                        <button
+                                            onClick={() => handleViewContactClick(contact)}
+                                            className="text-blue-900 p-1 rounded block bg-white "
+                                        >
+                                            View
+                                        </button>
+                                    </div>
+
                                     <span className="font-semibold">{contact.firstName}</span>
                                     <span className="ml-1 font-semibold  overflow-hidden overflow-ellipsis">
                                         {contact.lastName}
                                     </span>
-                                    <span className="block">{contact.status}</span>
                                 </div>
                                 <button
                                     onClick={() => handleEditContactClick(contact)}
@@ -74,6 +96,13 @@ const ContactPage: FC = () => {
                                 </button>
                             </div>
                         ))}
+                        {/* Modal component */}
+                        {isModalVisible && (
+                            <ContactDetailsModal
+                                contact={selectedContact!}
+                                onClose={handleCloseModal}
+                            />
+                        )}
                     </div>
                 ) : (
                     <div

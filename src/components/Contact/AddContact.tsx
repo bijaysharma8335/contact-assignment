@@ -26,13 +26,18 @@ const AddContact: FC<{ onContactSave: () => void }> = ({ onContactSave }) => {
     };
     //event handler for for new contact to store
     const handleSaveContact = () => {
-        const newContact = { id: String(Date.now()), firstName, lastName, status };
+        if (!firstName || !lastName) {
+            alert("PLease fill out all the fields");
+        } else if (firstName && lastName) {
+            const newContact = { id: String(Date.now()), firstName, lastName, status };
 
-        //dispatch addcontact reducer function and update store
-        dispatch(addContact(newContact));
+            //dispatch addcontact reducer function and update store
+            dispatch(addContact(newContact));
 
-        // Call the provided callback to switch back to 'displaycontact' mode
-        onContactSave();
+            // Call the provided callback to switch back to 'displaycontact' mode
+
+            onContactSave();
+        }
     };
 
     return (

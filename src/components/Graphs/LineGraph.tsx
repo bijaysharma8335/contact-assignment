@@ -63,7 +63,7 @@ const LineGraph: FC = () => {
     };
 
     return (
-        <div className="bg-orange-50 w-full  p-4">
+        <div className=" w-full  p-4">
             <h1 className="text-xl font-semibold mb-2">Line Graph</h1>
             <div className=" p-2 mb-2 border-2 border-black my-auto">
                 {/* Rendering line chart here */}
