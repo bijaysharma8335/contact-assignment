@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { addContact } from "../features/contactSlice";
 
 //component for creating and saving new contact
-const AddContact: FC = () => {
+const AddContact: FC<{ onContactSave: () => void }> = ({ onContactSave }) => {
     const dispatch = useDispatch();
     //usestates
     const [firstName, setFirstName] = useState("");
@@ -30,6 +30,9 @@ const AddContact: FC = () => {
 
         //dispatch addcontact reducer function and update store
         dispatch(addContact(newContact));
+
+        // Call the provided callback to switch back to 'displaycontact' mode
+        onContactSave();
     };
 
     return (
@@ -39,18 +42,6 @@ const AddContact: FC = () => {
             </h5>
             <div className="border-2 border-black p-2 bg-white">
                 <form className="w-full">
-                    {/* <div className="flex mb-4 ">
-                        <label htmlFor="fname" className="mr-2 font-semibold sm:block">
-                            First Name:
-                        </label>
-                        <input
-                            type="text"
-                            className="border border-black py-1 px-2"
-                            value={firstName}
-                            onChange={handleFirstNameChange}
-                            required
-                        />
-                    </div> */}
                     <div className="mb-4 sm:flex sm:items-center md:flex md:items-start lg:flex lg:items-center xl:flex xl:items-center">
                         <label htmlFor="fname" className="mr-2 font-semibold sm:w-1/4">
                             First Name:
@@ -63,30 +54,7 @@ const AddContact: FC = () => {
                             required
                         />
                     </div>
-                    {/* <div className="mb-4 sm:flex sm:items-center">
-                        <label htmlFor="fname" className="mr-2 font-semibold sm:w-1/4">
-                            First Name:
-                        </label>
-                        <input
-                            type="text"
-                            className="border border-black py-1 px-2 sm:w-3/4"
-                            value={firstName}
-                            onChange={handleFirstNameChange}
-                            required
-                        />
-                    </div> */}
-                    {/* <div className="mb-4 sm:flex sm:items-center">
-                        <label htmlFor="lname" className="mr-2 font-semibold sm:w-1/4">
-                            Last Name:
-                        </label>
-                        <input
-                            type="text"
-                            className="border border-black py-1 px-2 sm:w-3/4"
-                            value={lastName}
-                            onChange={handleLastNameChange}
-                            required
-                        />
-                    </div> */}
+
                     <div className="mb-4 sm:flex sm:items-center md:flex md:items-start lg:flex lg:items-center xl:flex xl:items-center">
                         <label htmlFor="lname" className="mr-2 font-semibold sm:w-1/4">
                             Last Name:
@@ -99,20 +67,9 @@ const AddContact: FC = () => {
                             required
                         />
                     </div>
-                    {/* <div className="flex mb-4 ">
-                        <label htmlFor="lname" className="mr-2 font-semibold">
-                            Last Name:
-                        </label>
-                        <input
-                            type="text"
-                            className="border border-black py-1 px-2"
-                            value={lastName}
-                            onChange={handleLastNameChange}
-                            required
-                        />
-                    </div> */}
+
                     <div className="flex mb-4">
-                        <label className="mr-2 font-semibold me-8 mt-4 ms-1 sm:ms-0">Status:</label>
+                        <label className="mr-2 font-semibold me-8 mt-4  sm:ms-0">Status:</label>
                         <div>
                             <div className="flex items-center mb-2 ">
                                 <input

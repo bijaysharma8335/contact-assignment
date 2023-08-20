@@ -1,17 +1,19 @@
-import React, { useState, FC } from "react";
+import { useState, FC } from "react";
 import { RiCloseCircleFill } from "react-icons/ri";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import AddContact from "./Contact/AddContact";
 import EditContact from "./Contact/EditContact";
 import { RootState } from "./features/store";
+import { deleteContact } from "./features/contactSlice";
 
 interface Contact {
     id: string;
     firstName: string;
-    lastName: string;
+    lastName: string; // Use 'string' instead of 'String'
     status: string;
 }
 const ContactPage: FC = () => {
+    const dispatch = useDispatch();
     // Retrieve contacts data from Redux store using useSelector
     const contacts = useSelector((state: RootState) => state.contacts.contacts);
     const [active, setActive] = useState("displaycontact");
@@ -26,10 +28,12 @@ const ContactPage: FC = () => {
         setActive("editcontact");
         setSelectedContact(contact);
     };
-    // Handle click event to switch to the 'editcontact' mode
-    const handleDeleteContactClick = () => {};
 
-    console.log(contacts);
+    // Handle click event to delete a contact
+    const handleDeleteContactClick = (contactId: string) => {
+        // Dispatch deleteContact action with the contact's id
+        dispatch(deleteContact(contactId));
+    };
     return (
         <div className="bg-orange-50  py-3 px-5  w-full  ">
             {active === "displaycontact" && (
@@ -57,12 +61,15 @@ const ContactPage: FC = () => {
                                     <span className="block">{contact.status}</span>
                                 </div>
                                 <button
-                                    // onClick={() => handleEditContactClick(contact)}
+                                    onClick={() => handleEditContactClick(contact)}
                                     className="btn bg-lime-400 rounded text-white px-2 py-1 font-semibold my-4 w-20 block border-2 border-gray-400 font-sans mx-auto"
                                 >
                                     Edit
                                 </button>
-                                <button className="btn bg-red-400 rounded text-white px-2 py-1 font-semibold my-4 w-20 block border-2 border-gray-400 font-sans mx-auto">
+                                <button
+                                    onClick={() => handleDeleteContactClick(contact.id)}
+                                    className="btn bg-red-400 rounded text-white px-2 py-1 font-semibold my-4 w-20 block border-2 border-gray-400 font-sans mx-auto"
+                                >
                                     Delete
                                 </button>
                             </div>
@@ -90,7 +97,9 @@ const ContactPage: FC = () => {
                 )
             ) : null}
             {/* Render the 'AddContact' component in 'addcontact' mode */}
-            {active === "addcontact" && <AddContact />}
+            {active === "addcontact" && (
+                <AddContact onContactSave={() => setActive("displaycontact")} />
+            )}
             {/* Render the 'EditContact' component in 'editcontact' mode */}
             {active === "editcontact" && selectedContact !== null && (
                 <EditContact contact={selectedContact} />

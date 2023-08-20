@@ -10,7 +10,7 @@ function App() {
             <Header />
             <div className=" flex ">
                 <Router>
-                    <Sidebar />
+                    {/* <Sidebar /> */}
                     <Routes>
                         <Route path="/" element={<Contact />} />
                         <Route path="/charts" element={<Dashboard />} />
