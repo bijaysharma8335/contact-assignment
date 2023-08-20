@@ -61,13 +61,13 @@ const Map: React.FC = () => {
     });
 
     if (countryDataQuery.isLoading)
-        return <h1 className="text-center text-lg my-2">Loading....</h1>;
+        return <h1 className="text-center text-lg my-2">Loading Map data....</h1>;
     if (countryDataQuery.isError) return <h1>Error loading graph Data!!!</h1>;
     const countryData = countryDataQuery.data;
 
     const worldData = worldwideDataQuery.data;
     return (
-        <div className="w-full md:p-4 lg:p-4">
+        <div className="w-full md:p-4 lg:p-4 ml-1">
             <h1 className="text-xl font-semibold mb-2 ">Map</h1>
             <div className="bg-white  my-2 p-2">
                 <span className="block"> Total Cases : {worldData?.cases}</span>

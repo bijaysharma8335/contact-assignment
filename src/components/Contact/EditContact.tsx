@@ -13,10 +13,11 @@ interface Contact {
 // Define the props interface for the EditContact component
 interface EditContactProps {
     contact: Contact;
+    onContactUpdate: () => void;
 }
 
 // EditContact component that allows editing a contact's details
-const EditContact: FC<EditContactProps> = ({ contact }) => {
+const EditContact: FC<EditContactProps> = ({ contact, onContactUpdate }) => {
     const dispatch = useDispatch();
 
     // State to manage edit contact data
@@ -46,6 +47,7 @@ const EditContact: FC<EditContactProps> = ({ contact }) => {
     const handleSaveEditedContact = () => {
         // Dispatch an action to update the contact
         dispatch(updateContact(editedContact));
+        onContactUpdate();
     };
 
     // Render the EditContact component

@@ -61,7 +61,7 @@ const LineGraph: FC = () => {
     });
 
     // Handling loading and error states
-    if (graphQuery.isLoading) return <h1 className="text-center text-lg my-2">Loading....</h1>;
+    if (graphQuery.isLoading) return <h1 className="text-center text-lg my-2">Loading Line Graph Data....</h1>;
     if (graphQuery.isError)
         return (
             <h1 className="text-center text-red-800 text-lg my-2">Error loading graph Data!!!</h1>

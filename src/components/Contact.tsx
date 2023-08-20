@@ -42,14 +42,14 @@ const ContactPage: FC = () => {
     const handleViewContactClick = (contact: Contact) => {
         setSelectedContact(contact);
         setIsModalVisible(true);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     const handleCloseModal = () => {
         setIsModalVisible(false);
     };
     return (
-        <div className="bg-orange-50  py-3 sm:px-5 md:px-5 lg:px-5  w-full  h-[400px] overflow-y-scroll">
+        <div className="bg-orange-50  py-3 sm:px-5 md:px-5 lg:px-5  w-full  h-[400px] ">
             {active === "displaycontact" && (
                 <div className="text-center">
                     <button
@@ -131,7 +131,10 @@ const ContactPage: FC = () => {
             )}
             {/* Render the 'EditContact' component in 'editcontact' mode */}
             {active === "editcontact" && selectedContact !== null && (
-                <EditContact contact={selectedContact} />
+                <EditContact contact={selectedContact}  onContactUpdate={() => {
+                    setActive("displaycontact"); // Switch back to 'displaycontact' mode after update
+                    setSelectedContact(null); // Clear selectedContact state
+                }} />
             )}
         </div>
     );
