@@ -5,8 +5,10 @@ import Map from "./Graphs/Map";
 const Dashboard: FC = () => {
     return (
         <>
-            <LineGraph />
-            <Map />
+            <div className="flex flex-col">
+                <LineGraph />
+                <Map />
+            </div>
         </>
     );
 };

@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="border-4 border-bordercolor  mt-5 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl sm:ms-1 lg:mx-auto md:mx-auto shadow-lg w-auto ">
             <Header />
-            <div className=" flex h-[400px]">
+            <div className=" flex ">
                 <Router>
                     <Sidebar />
                     <Routes>
