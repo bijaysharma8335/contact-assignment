@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC ,useState,useEffect} from "react";
 import axios from "axios";
 
 import { Line } from "react-chartjs-2";
@@ -28,6 +28,26 @@ interface GraphData {
 
 // component for creating Line Graph chart  of COVID-19  historical data
 const LineGraph: FC = () => {
+    const [chartWidth, setChartWidth] = useState("100%");
+
+    useEffect(() => {
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 400) {
+                setChartWidth("240px");
+            } else {
+                setChartWidth("100%");
+            }
+        };
+
+        handleResize(); // Initial call to set chart width based on window width
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
     //using useQuery from react-query from fetching graph data from api
     const graphQuery = useQuery<GraphData>({
         queryKey: ["graphData"],
@@ -63,9 +83,12 @@ const LineGraph: FC = () => {
     };
 
     return (
-        <div className=" w-full  p-4">
+        <div className="lg:w-full md:w-full   md:p-4 lg:p-4 p-1">
             <h1 className="text-xl font-semibold mb-2">Line Graph</h1>
-            <div className=" p-2 mb-2 border-2 border-black my-auto">
+            <div
+                className="lg:p-2 md:p-2 sm:p-2 mb-2 border-2 border-black my-auto "
+                style={{ minWidth: "200px", width: chartWidth }} 
+            >
                 {/* Rendering line chart here */}
                 <Line data={chartData} options={{ responsive: true }} />
             </div>

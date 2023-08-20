@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
@@ -28,6 +28,26 @@ interface CountryData {
 }
 
 const Map: React.FC = () => {
+    const [chartWidth, setChartWidth] = useState("100%");
+
+    useEffect(() => {
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 400) {
+                setChartWidth("240px");
+            } else {
+                setChartWidth("100%");
+            }
+        };
+
+        handleResize();
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
     const worldwideDataQuery = useQuery<WorldwideData>(
         ["worldData"], // Use an array as the query key
         async () => {
@@ -47,7 +67,7 @@ const Map: React.FC = () => {
 
     const worldData = worldwideDataQuery.data;
     return (
-        <div className="w-full p-4">
+        <div className="w-full md:p-4 lg:p-4">
             <h1 className="text-xl font-semibold mb-2 ">Map</h1>
             <div className="bg-white  my-2 p-2">
                 <span className="block"> Total Cases : {worldData?.cases}</span>
@@ -55,7 +75,11 @@ const Map: React.FC = () => {
                 <span className="block"> Total Deaths : {worldData?.deaths}</span>
                 <span className="block"> Total Recovered : {worldData?.recovered}</span>
             </div>
-            <MapContainer center={[0, 0]} zoom={2} style={{ height: "400px" }}>
+            <MapContainer
+                center={[0, 0]}
+                zoom={2}
+                style={{ height: "400px", width: chartWidth, marginLeft: "4px" }}
+            >
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

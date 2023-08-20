@@ -49,7 +49,7 @@ const ContactPage: FC = () => {
         setIsModalVisible(false);
     };
     return (
-        <div className="bg-orange-50  py-3 px-5  w-full  ">
+        <div className="bg-orange-50  py-3 sm:px-5 md:px-5 lg:px-5  w-full  h-[400px] overflow-y-scroll">
             {active === "displaycontact" && (
                 <div className="text-center">
                     <button
